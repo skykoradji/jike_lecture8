@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 import theme from '../lib/theme';
@@ -68,10 +68,10 @@ MyDocument.getInitialProps = async ctx => {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
-      <Fragment key="styles">
+      <React.Fragment key="styles">
         {initialProps.styles}
         {sheets.getStyleElement()}
-      </Fragment>
+      </React.Fragment>
     ]
   };
 };

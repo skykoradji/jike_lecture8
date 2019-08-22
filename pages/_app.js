@@ -2,40 +2,32 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import App, { Container } from 'next/app';
-import withRedux from 'next-redux-wrapper';
 import { PersistGate } from 'redux-persist/integration/react';
-import configureStore from '../lib/redux';
+import withRedux from 'next-redux-wrapper';
+
+import makeStore from '../lib/redux';
 import actions from '../lib/redux/actions';
 
-const { store, persistor } = configureStore();
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
-export default withRedux(store, { debug: false }, actions)(
-  class MyApp extends App {
-    static async getInitialProps({ Component, ctx }) {
-      const init = (await Component.getInitialProps(ctx)) || {};
-      return {
-        pageProps: {
-          // Call page-level getInitialProps
-          ...init,
-          query: ctx.query,
-          host: (ctx.req && ctx.req.headers.host) || window.location.host,
-          pathname: ctx.pathname
-        }
-      };
-    }
-
-    render() {
-      const { Component, pageProps, store } = this.props;
-
-      return (
-        <Container>
-          <Provider store={store}>
-            <PersistGate persistor={persistor}>
-              <Component {...pageProps} />
-            </PersistGate>
-          </Provider>
-        </Container>
-      );
-    }
+    return { pageProps };
   }
-);
+
+  render() {
+    const { Component, pageProps, store } = this.props;
+
+    return (
+      <Container>
+        <Provider store={store}>
+          <PersistGate persistor={store.__persistor}>
+            <Component {...pageProps} />
+          </PersistGate>
+        </Provider>
+      </Container>
+    );
+  }
+}
+
+export default withRedux(makeStore, actions)(MyApp);
