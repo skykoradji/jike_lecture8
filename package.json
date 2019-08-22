@@ -1,7 +1,7 @@
 {
-  "name": "react-bot",
+  "name": "jike_lecture_8",
   "version": "1.0.6",
-  "description": "React component for chatbot UI",
+  "description": "Jike lecture 8 server-side rendering",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -35,6 +35,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "config": "^3.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "lodash": "^4.17.11",

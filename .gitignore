@@ -3,4 +3,5 @@ out
 .idea
 .eslintcache
 build
+.next
 package-lock.json
