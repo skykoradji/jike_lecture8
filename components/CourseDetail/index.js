@@ -56,7 +56,7 @@ class CourseDetail extends Component {
     this.setState(state => {
       const updated = state;
       // update course CoverImage
-      updated.course.coverImage = coverImage;
+      updated.course.coverImage = `http://www.aistan.com.au/${coverImage}`;
       return updated;
     });
   }
