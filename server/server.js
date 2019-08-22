@@ -9,25 +9,22 @@ const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 5000;
 const app = next({ dev });
 
-const handler = routes.getRequestHandler(app, ({ req, res, route, query }) => {
-  app.render(req, res, route.page, query);
-});
 // Nextjs's server prepared
 app
   .prepare()
   .then(() => {
     const server = express();
     server.use(cors());
-    server.get('*', (req, res) => {
-      const parsedUrl = parse(req.url, true);
-      const rootStaticFiles = ['/robots.txt'];
-      if (rootStaticFiles.includes(parsedUrl.pathname)) {
-        const staticPath = join(__dirname, '../static', parsedUrl.pathname);
-        app.serveStatic(req, res, staticPath);
-      } else {
-        handler(req, res, parsedUrl);
-      }
-    });
+    // server.get('*', (req, res) => {
+    //   const parsedUrl = parse(req.url, true);
+    //   const rootStaticFiles = ['/robots.txt'];
+    //   if (rootStaticFiles.includes(parsedUrl.pathname)) {
+    //     const staticPath = join(__dirname, '../static', parsedUrl.pathname);
+    //     app.serveStatic(req, res, staticPath);
+    //   } else {
+    //     handler(req, res, parsedUrl);
+    //   }
+    // });
 
     server.listen(port, err => {
       if (err) throw err;
