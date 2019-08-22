@@ -119,7 +119,6 @@ class CreateCourse extends Component {
   }
 
   handleAddChip = chip => {
-    console.log(chip);
     this.setState(prevState => {
       prevState.courseTags.push(chip);
       return prevState;

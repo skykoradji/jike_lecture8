@@ -13,11 +13,13 @@ class MyApp extends App {
     const init = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
     return {
-      // Call page-level getInitialProps
-      ...init,
-      query: ctx.query,
-      host: (ctx.req && ctx.req.headers.host) || window.location.host,
-      pathname: ctx.pathname
+      pageProps: {
+        // Call page-level getInitialProps
+        ...init,
+        query: ctx.query,
+        host: (ctx.req && ctx.req.headers.host) || window.location.host,
+        pathname: ctx.pathname
+      }
     };
   }
 
