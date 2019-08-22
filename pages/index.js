@@ -15,7 +15,7 @@ const styles = {
   }
 };
 
-function Home({ classes, history }) {
+function Home({ classes }) {
   return (
     <div>
       <Typography className={classes.headline} variant="h4" component="h4">
@@ -26,7 +26,7 @@ function Home({ classes, history }) {
         experts.
       </Typography>
 
-      <Courses history={history} />
+      <Courses />
     </div>
   );
 }

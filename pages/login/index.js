@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withLayout from '../../lib/withLayout';
 import restClient from '../../lib/restClient';
 import errorHandler from '../../lib/errorHandler';
+import { Router } from '../../lib/routes';
 
 const styles = theme => ({
   loginContainer: {
@@ -67,7 +68,7 @@ class LoginPage extends Component {
 
       const { token, role, uniqueId } = response.data;
 
-      const { authenticate, updateUser, history } = this.props;
+      const { authenticate, updateUser } = this.props;
       localStorage.setItem('token', token);
       localStorage.setItem('uniqueId', uniqueId);
       authenticate(response.data);
@@ -75,7 +76,7 @@ class LoginPage extends Component {
 
       updateUser({ ...profile.data, role });
 
-      history.push('/');
+      Router.push('/');
     } catch (err) {
       errorHandler(err);
       this.setState({ submitted: false });
@@ -83,8 +84,7 @@ class LoginPage extends Component {
   }
 
   signup = () => {
-    const { history } = this.props;
-    history.push('/signup');
+    Router.push('/signup');
   };
   render() {
     const { classes } = this.props;

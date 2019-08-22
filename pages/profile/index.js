@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Button, Grid, Typography, FormControl, Checkbox } from '@material-ui/core';
 import { ArrowForward } from '@material-ui/icons';
 import withLayout from '../../lib/withLayout';
+import { Router } from '../../lib/routes';
 
 const styles = theme => ({
   headline: {
@@ -49,7 +50,7 @@ const styles = theme => ({
 
 class Profile extends Component {
   render() {
-    const { classes, user, history } = this.props;
+    const { classes, user } = this.props;
     if (!user) return null;
     const {
       email,
@@ -147,7 +148,7 @@ class Profile extends Component {
             <FormControl>
               <Button
                 className={classes.updateButton}
-                onClick={() => history.push('/profile/edit')}
+                onClick={() => Router.push('/profile/edit')}
                 variant="contained"
                 color="primary"
                 type="submit"

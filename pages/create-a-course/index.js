@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ChipInput from 'material-ui-chip-input';
 import restClient from '../../lib/restClient';
 import withLayout from '../../lib/withLayout';
+import { Router } from '../../lib/routes';
 import errorHandler from '../../lib/errorHandler';
 import CustomTooltips from '../../components/Tooltips';
 
@@ -109,8 +110,7 @@ class CreateCourse extends Component {
         IsActive: true
       })
       .then(() => {
-        const { history } = this.props;
-        history.push(`/`);
+        Router.push(`/`);
       })
       .catch(err => {
         errorHandler(err);
@@ -134,8 +134,7 @@ class CreateCourse extends Component {
   };
 
   goBack = () => {
-    const { history } = this.props;
-    history.goBack();
+    Router.goBack();
   };
   render() {
     const {

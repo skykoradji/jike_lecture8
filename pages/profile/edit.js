@@ -15,6 +15,7 @@ import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { ArrowForward } from '@material-ui/icons';
 import restClient from '../../lib/restClient';
 import withLayout from '../../lib/withLayout';
+import { Router } from '../../lib/routes';
 
 const styles = theme => ({
   profileContainer: {
@@ -131,7 +132,7 @@ class ProfileEdit extends Component {
         SubscribeTeacherEmails: subscribeTeacherEmails,
         SubscribeContentSuggestions: subscribeContentSuggestions
       };
-      const { user, updateUser, history } = this.props;
+      const { user, updateUser } = this.props;
       await restClient().put(`userprofile/${user.uniqueId}`, newUser);
 
       newUser = _.assign({
@@ -154,7 +155,7 @@ class ProfileEdit extends Component {
 
       updateUser(newUser);
 
-      history.push('/profile');
+      Router.push('/profile');
     } catch (err) {
       this.setState({ submitted: false });
     }

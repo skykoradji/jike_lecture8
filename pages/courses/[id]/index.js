@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 import CourseDetail from '../../../components/CourseDetail';
 import withLayout from '../../../lib/withLayout';
 
-class Detail extends Component {
-  render() {
-    const { user, history, match } = this.props;
-    const { id } = match.params;
-    return (
-      <div>
-        <CourseDetail id={id} history={history} user={user} />
-      </div>
-    );
-  }
+function Detail({ user }) {
+  const router = useRouter();
+  const { id } = router.query;
+  return (
+    <div>
+      <CourseDetail id={id} user={user} />
+    </div>
+  );
 }
 
 export default withLayout(Detail);

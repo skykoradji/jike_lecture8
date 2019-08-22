@@ -53,7 +53,7 @@ function Header({ classes, user, deauthenticate }) {
         <Grid container direction="row" justify="space-around" alignItems="center">
           <Grid item sm={7} xs={2} style={{ textAlign: 'left' }}>
             <Link href="/">
-              <img className={classes.logo} src="static/images/white-100@2x.png" alt="Iters" />
+              <img className={classes.logo} src="/static/images/white-100@2x.png" alt="Iters" />
             </Link>
           </Grid>
           <Grid item sm={5} xs={10} style={{ textAlign: 'right' }}>

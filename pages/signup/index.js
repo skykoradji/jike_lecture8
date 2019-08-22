@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { TextValidator, SelectValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import withLayout from '../../lib/withLayout';
 import restClient from '../../lib/restClient';
+import { Router } from '../../lib/routes';
 
 const styles = theme => ({
   signupContainer: {
@@ -79,14 +80,14 @@ class SignUp extends Component {
 
         const { token, role, uniqueId } = response.data;
 
-        const { authenticate, updateUser, history } = this.props;
+        const { authenticate, updateUser } = this.props;
         localStorage.setItem('token', token);
         localStorage.setItem('uniqueId', uniqueId);
         authenticate(response.data);
         const profile = await restClient().get(`userprofile/${uniqueId}`);
 
         updateUser({ ...profile.data, role });
-        history.push('/');
+        Router.push('/');
       })
       .catch(() => {
         this.setState({ submitted: false });
