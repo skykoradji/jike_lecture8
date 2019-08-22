@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, List, ListItem, ListItemText, Popover } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { Router } from '../../lib/routes';
 
 const styles = () => ({
   menuAvatar: {
@@ -38,13 +39,11 @@ class MenuDrop extends Component {
   }
 
   redirectProfile = () => {
-    const { history } = this.props;
-    history.push('/profile');
+    Router.push('/profile');
   };
 
   redirectSubscription = () => {
-    const { history } = this.props;
-    history.push('/subscriptions');
+    Router.push('/subscriptions');
   };
   render() {
     const { anchorEl } = this.state;

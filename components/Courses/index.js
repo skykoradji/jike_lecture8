@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import restClient from '../../lib/restClient';
+import { Router } from '../../lib/routes';
 import Loader from '../Loader';
 
 const styles = {
@@ -42,8 +43,7 @@ class Courses extends Component {
   }
 
   viewCourseDetail(id) {
-    const { history } = this.props;
-    history.push(`/courses/${id}`);
+    Router.push(`/courses/${id}`);
   }
 
   render() {

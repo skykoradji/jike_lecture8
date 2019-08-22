@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import restClient from '../../lib/restClient';
+import { Router } from '../../lib/routes';
 import Loader from '../Loader';
 import CourseSubscriptions from '../CourseSubscriptions';
 import CourseBannerEditor from '../CourseBannerEditor';
@@ -103,15 +104,14 @@ class CourseDetail extends Component {
     try {
       const { course } = this.state;
       await restClient().delete(`courses/${course.courseId}`);
-      const { history } = this.props;
-      history.push('/');
+
+      Router.push('/');
     } catch (err) {}
   }
 
   editCourse = () => {
-    const { history } = this.props;
     const { course } = this.state;
-    history.push(`/courses/${course.courseId}/edit`);
+    Router.push(`/courses/${course.courseId}/edit`);
   };
 
   getActions(user) {
@@ -145,8 +145,7 @@ class CourseDetail extends Component {
   }
 
   redirectAllCourses = () => {
-    const { history } = this.props;
-    history.push('/');
+    Router.push('/');
   };
 
   render() {

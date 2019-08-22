@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import _ from 'lodash';
 import { AppBar, Toolbar, Button, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from '../../lib/routes';
+import { Link, Router } from '../../lib/routes';
 import MenuDrop from './menu';
 
 const styles = theme => {
@@ -36,23 +36,23 @@ const styles = theme => {
   };
 };
 
-function Header({ classes, user, history, deauthenticate }) {
+function Header({ classes, user, deauthenticate }) {
   const login = () => {
-    history.push('/login');
+    Router.push('/login');
   };
   const signup = () => {
-    history.push('/signup');
+    Router.push('/signup');
   };
 
   const createACourse = () => {
-    history.push('/create-a-course');
+    Router.push('/create-a-course');
   };
   return (
     <AppBar position="static" classes={{ root: classes.root }}>
       <Toolbar>
         <Grid container direction="row" justify="space-around" alignItems="center">
           <Grid item sm={7} xs={2} style={{ textAlign: 'left' }}>
-            <Link href="#/" route="/">
+            <Link href="/">
               <img className={classes.logo} src="static/images/white-100@2x.png" alt="Iters" />
             </Link>
           </Grid>

@@ -12,6 +12,7 @@ import { Work } from '@material-ui/icons';
 import moment from 'moment';
 import restClient from '../../lib/restClient';
 import errorHandler from '../../lib/errorHandler';
+import { Router } from '../../lib/routes';
 import Loader from '../Loader';
 
 const styles = theme => ({
@@ -41,8 +42,7 @@ class SubscriptionCourses extends Component {
   }
 
   redirectCourse = id => {
-    const { history } = this.props;
-    history.push(`/courses/${id}`);
+    Router.push(`/courses/${id}`);
   };
 
   render() {
