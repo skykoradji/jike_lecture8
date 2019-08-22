@@ -13,8 +13,8 @@ import {
 } from '@material-ui/core';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { ArrowForward } from '@material-ui/icons';
-import restClient from '../lib/restClient';
-import withLayout from '../lib/withLayout';
+import restClient from '../../lib/restClient';
+import withLayout from '../../lib/withLayout';
 
 const styles = theme => ({
   profileContainer: {

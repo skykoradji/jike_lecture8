@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CourseDetail from '../components/CourseDetail';
-import withLayout from '../lib/withLayout';
+import CourseDetail from '../../components/CourseDetail';
+import withLayout from '../../lib/withLayout';
 
 class Detail extends Component {
   render() {

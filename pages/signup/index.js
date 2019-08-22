@@ -3,8 +3,8 @@ import { Button, Grid, Typography, MenuItem } from '@material-ui/core';
 import { ArrowForward } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import { TextValidator, SelectValidator, ValidatorForm } from 'react-material-ui-form-validator';
-import withLayout from '../lib/withLayout';
-import restClient from '../lib/restClient';
+import withLayout from '../../lib/withLayout';
+import restClient from '../../lib/restClient';
 
 const styles = theme => ({
   signupContainer: {

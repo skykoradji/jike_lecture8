@@ -1,6 +1,6 @@
 import React from 'react';
-import withLayout from '../lib/withLayout';
-import SubscriptionCourses from '../components/SubscriptionCourses';
+import withLayout from '../../lib/withLayout';
+import SubscriptionCourses from '../../components/SubscriptionCourses';
 
 function Subscriptions(props) {
   return (

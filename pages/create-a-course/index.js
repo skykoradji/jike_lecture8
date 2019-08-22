@@ -9,13 +9,12 @@ import {
 } from '@material-ui/core';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { ArrowForward } from '@material-ui/icons';
-import ChipInput from 'material-ui-chip-input';
 import { withStyles } from '@material-ui/core/styles';
-import restClient from '../lib/restClient';
-import withLayout from '../lib/withLayout';
-import errorHandler from '../lib/errorHandler';
-import CustomTooltips from '../components/Tooltips';
-import Loader from '../components/Loader';
+import ChipInput from 'material-ui-chip-input';
+import restClient from '../../lib/restClient';
+import withLayout from '../../lib/withLayout';
+import errorHandler from '../../lib/errorHandler';
+import CustomTooltips from '../../components/Tooltips';
 
 const styles = () => ({
   headline: {
@@ -38,10 +37,9 @@ const styles = () => ({
   }
 });
 
-class EditCourse extends Component {
+class CreateCourse extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       courseName: '',
       subTitle: '',
@@ -54,27 +52,15 @@ class EditCourse extends Component {
       knowledgePoints: '',
       scores: '',
       isRecommended: false,
-      submitted: false,
-      loaded: false
+      submitted: false
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
     this.handleCheckBoxChange = this.handleCheckBoxChange.bind(this);
   }
 
-  async componentDidMount() {
-    try {
-      const { match } = this.props;
-      const { id } = match.params;
-      const response = await restClient().get(`courses/${id}`);
-      this.setState({
-        ...response.data,
-        courseTags: response.data.courseTags && response.data.courseTags.split(','),
-        loaded: true
-      });
-    } catch (err) {}
-
+  componentDidMount() {
     // custom rule will have name 'isPasswordMatch'
     ValidatorForm.addValidationRule('isNumber', value => {
       return !isNaN(parseFloat(value)) && isFinite(value);
@@ -104,12 +90,11 @@ class EditCourse extends Component {
       courseDetails,
       knowledgePoints,
       scores,
-      isRecommended,
-      courseId
+      isRecommended
     } = this.state;
 
     restClient()
-      .put(`courses/${courseId}`, {
+      .post(`courses`, {
         CourseName: courseName,
         SubTitle: subTitle,
         CourseCode: courseCode,
@@ -125,7 +110,7 @@ class EditCourse extends Component {
       })
       .then(() => {
         const { history } = this.props;
-        history.push(`/courses/${courseId}`);
+        history.push(`/`);
       })
       .catch(err => {
         errorHandler(err);
@@ -152,7 +137,6 @@ class EditCourse extends Component {
     const { history } = this.props;
     history.goBack();
   };
-
   render() {
     const {
       submitted,
@@ -165,18 +149,15 @@ class EditCourse extends Component {
       courseDetails,
       knowledgePoints,
       scores,
-      loaded,
       courseTags,
       isRecommended
     } = this.state;
-    if (!loaded) return <Loader />;
-
     const { classes } = this.props;
     return (
       <Grid container justify="center">
         <Grid item md={8} xs={12}>
           <Typography className={classes.headline} variant="h3" component="h3">
-            Edit Course
+            Create a course
           </Typography>
           <ValidatorForm onSubmit={this.handleSubmit}>
             <TextValidator
@@ -346,7 +327,6 @@ class EditCourse extends Component {
                 onDelete={this.handleDeleteChip}
               />
             </FormControl>
-
             <div className={classes.clear} />
 
             <Button
@@ -356,7 +336,7 @@ class EditCourse extends Component {
               type="submit"
               color="primary"
             >
-              <ArrowForward /> Update
+              <ArrowForward /> Create
             </Button>
 
             <Button
@@ -367,7 +347,6 @@ class EditCourse extends Component {
             >
               Cancel
             </Button>
-
             <div className="clear" />
           </ValidatorForm>
         </Grid>
@@ -376,4 +355,4 @@ class EditCourse extends Component {
   }
 }
 
-export default withLayout(withStyles(styles)(EditCourse));
+export default withLayout(withStyles(styles)(CreateCourse));

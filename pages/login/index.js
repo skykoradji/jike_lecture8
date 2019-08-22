@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
-import withLayout from '../lib/withLayout';
-import restClient from '../lib/restClient';
-import errorHandler from '../lib/errorHandler';
+import withLayout from '../../lib/withLayout';
+import restClient from '../../lib/restClient';
+import errorHandler from '../../lib/errorHandler';
 
 const styles = theme => ({
   loginContainer: {

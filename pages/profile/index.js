@@ -3,7 +3,7 @@ import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, Grid, Typography, FormControl, Checkbox } from '@material-ui/core';
 import { ArrowForward } from '@material-ui/icons';
-import withLayout from '../lib/withLayout';
+import withLayout from '../../lib/withLayout';
 
 const styles = theme => ({
   headline: {
