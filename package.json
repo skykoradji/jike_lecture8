@@ -73,11 +73,11 @@
   },
   "scripts": {
     "start": "NODE_ENV=production PORT=4000 node server/server.js",
+    "dev": "PORT=4000 node server/server.js",
     "build": "NODE_ENV=production next build",
     "now-build": "NODE_ENV=production next build",
     "prettier": "prettier \"{,**/}*.js\" --write",
     "test": "jest",
-    "lint": "eslint .",
-    "eject": "react-scripts eject"
+    "lint": "eslint ."
   }
 }
