@@ -205,7 +205,7 @@ class ProfileEdit extends Component {
                   'Firstname cannot be shortter than 2 characters!',
                   'Firstname cannot be longer than 32 characters!'
                 ]}
-                value={firstName}
+                value={firstName || ''}
               />
 
               <TextValidator
@@ -221,7 +221,7 @@ class ProfileEdit extends Component {
                   'Lastname cannot be shortter than 2 characters!',
                   'Lastname cannot be longer than 32 characters!'
                 ]}
-                value={lastName}
+                value={lastName || ''}
               />
 
               <TextValidator
