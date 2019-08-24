@@ -146,7 +146,7 @@ workflows:
             branches:
               only: /^test$/
 
-  build-deploy-test:
+  build-deploy-production:
     jobs:
       - production:
           filters:
