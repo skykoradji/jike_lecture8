@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Deploy develop env to Now.sh
           command: |
-            sudo cp .now/develop.json now.json && cd build && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
+            sudo cp .now/develop.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
   test:
     docker:
@@ -84,7 +84,7 @@ jobs:
       - run:
           name: Deploy develop env to Now.sh
           command: |
-            sudo cp .now/test.json now.json && cd build && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
+            sudo cp .now/test.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
   production:
     docker:
@@ -125,7 +125,7 @@ jobs:
       - run:
           name: Deploy develop env to Now.sh
           command: |
-            sudo cp .now/production.json now.json && cd build && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
+            sudo cp .now/production.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
 
 
